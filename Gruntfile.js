@@ -2,23 +2,23 @@ module.exports = function(grunt) {
   require('load-grunt-tasks')(grunt);
 
   grunt.initConfig({
-
     babel: {
-      es6: {
+      options: {
+        babelrc: true
+      },
+      dist: {
         files: [{
           expand: true,
-          src: ['**/*.es6'],
+          cwd: 'src',
+          src: ['**/*.js'],
+          dest: 'lib',
           ext: '.js'
         }]
       },
-      options: {
-        experimental: true,
-        optional: ['runtime', 'es7.asyncFunctions']
-      }
     },
     watch: {
       babel: {
-        files: ['**/*.es6'],
+        files: ['src/*.js'],
         tasks: ['babel']
       }
     }
